@@ -1,0 +1,9 @@
+gcloud compute instance-templates create gke-nat-gw-mig-template-2 \
+    --machine-type=f1-micro \
+    --image-project=debian-cloud \
+    --image=debian-10-buster-v20200521 \
+    --network-interface network=default-svpc,subnet=svpc-subnet-1,address \
+    --network-interface network=gke-svpc,subnet=gke-subnet-1,no-address \
+    --can-ip-forward \
+    --region europe-west4 \
+    --metadata-from-file=startup-script=startup-script
